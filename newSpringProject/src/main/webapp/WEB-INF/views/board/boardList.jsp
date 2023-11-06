@@ -48,6 +48,8 @@ justify-content: center;
   			</span>
 			</button>
 			</div>
+			
+				
 		</form>
 	</div>
 	<!-- 검색 라인 끝 -->
@@ -60,8 +62,8 @@ justify-content: center;
 				<th scope="col">TITLE</th>
 				<th scope="col">MOD_DATE</th>
 				<th scope="col">READ_CNT</th>
-				<!--<th scope="col">COMMENT_CNT</th>-->
-				<!--<th scope="col">FILE_CNT</th>-->
+				<th scope="col">COMMENT_CNT</th>
+				<th scope="col">FILE_CNT</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -73,6 +75,8 @@ justify-content: center;
 					<td><a href="/board/detail?bno=${bvo.bno}">${bvo.title}</a></td>
 					<td>${bvo.modAt}</td>
 					<td>${bvo.readCount}</td>
+					<td>${bvo.cmtQty}</td>
+					<td>${bvo.hasFile}</td>
 				</tr>
 				
 			</c:forEach>

@@ -2,12 +2,14 @@ package com.myweb.www.service;
 
 import java.util.List;
 
+import com.myweb.www.domain.BoardDTO;
 import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.FileVO;
 import com.myweb.www.domain.PagingVO;
 
 public interface BoardService {
 
-	int write(BoardVO bvo);//글등록
+	int write(BoardDTO bdto);//글등록
 
 	List<BoardVO> getList(PagingVO pgvo);//리스트
 
@@ -15,9 +17,13 @@ public interface BoardService {
 
 	BoardVO getDetail(long bno);
 
-	int boardModify(BoardVO bvo);
+	int boardModify(BoardDTO bdto);
 
 	int boardRemove(long bno);
+
+	List<FileVO> getFlist(long bno);
+
+	int fileRemove(String uuid);
 
 
 

@@ -39,7 +39,7 @@ public class CommentServiceImpl implements CommentService{
 		PagingVO pgvo = new PagingVO(pageNo,5); //qty => 5	
 		log.info("pgvo>>>>"+pgvo);
 		//totalCount
-		int totalCount = cdao.getTotalCount(bno,pgvo);
+		int totalCount = cdao.getTotalCount(bno);
 		log.info("totalCount>>>>"+totalCount);
 		//cmtList
 		List<CommentVO> list = cdao.getcmtList(bno,pgvo);
@@ -48,6 +48,18 @@ public class CommentServiceImpl implements CommentService{
 		PagingHandler ph=new PagingHandler(pgvo, totalCount, list);
 		
 		return ph;
+	}
+
+	//댓글 수정
+	@Override
+	public int modify(CommentVO cvo) {
+		return cdao.update(cvo);
+	}
+	
+	//댓글 삭제
+	@Override
+	public int remove(long cno) {
+		return cdao.cmtRemove(cno);
 	}
 	
 

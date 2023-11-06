@@ -7,6 +7,9 @@
 		insert into board(writer,title,content)
 		values(#{writer},#{title},#{content})
 	</insert>
+	<select id="selectBno" resultType="long">
+	select max(bno) from board
+	</select>
 	<select id="selectAll" resultType="com.myweb.www.domain.BoardVO">
 		select * from board
 		<include refid="search"></include>

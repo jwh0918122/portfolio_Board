@@ -39,10 +39,13 @@ justify-content: center;
           <a class="nav-link" href="/">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">SIGN_UP</a>
+          <a class="nav-link" href="/member/register">SIGN_UP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">LOG_IN</a>
+          <a class="nav-link" href="/member/login">LOG_IN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/member/logout">LOG_OUT</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/board/list">BOARD_LIST</a>
