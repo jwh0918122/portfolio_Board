@@ -4,6 +4,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <head>
 <meta charset="UTF-8">
 <title>Nav</title>
@@ -25,15 +27,43 @@ flex-direction: column;
 display: flex;
 justify-content: center;
 }
+#b1{
+width: 100%
+}
+.custom1{
+display: flex;
+  
+}
+
+.bb{
+	
+margin-left: 700px;
+}
+#logo{
+width: 50px;
+left: 0px;
+
+}
+.container-fluid{
+height: 50px;
+}
+.navContainer{
+margin-bottom: 50px;
+}
 </style>
 </head>
 <body>
 
 <div class="navContainer">
-<div>
+<div id="b1">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse custom1" id="navbarSupportedContent">
+     <div>
+     	<img src="/resources/img/logo.png" id="logo">
+     </div>
+     
+     <div class="bb">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       
         <li class="nav-item">
@@ -74,8 +104,8 @@ justify-content: center;
         		<li class="nav-item">
           		 <a class="nav-link" href="/member/logout" id="logoutLink">LOG_OUT</a>
         		</li>
-        		<form action="member/logout" method="post" id="logoutForm">
-        		<input type="hidden" name="email" value="${authEmail}">
+        		<form action="/member/logout" method="post" id="logoutForm">
+        		<input type="hidden" name="email" value="${authEmail}">        		
         		</form>
         		
         </sec:authorize>
@@ -89,6 +119,12 @@ justify-content: center;
         </li>
         </sec:authorize>  
       </ul>
+    
+    </div>
+    
+    
+    
+    
     </div>
   </div>
 </nav>

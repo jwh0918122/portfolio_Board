@@ -96,7 +96,7 @@ public class MemberController {
 	@PostMapping("/Modify")
 	public String postModify(MemberVO mvo) {
 		int isOk=msv.postModify(mvo);
-		return"redirect:/member/memberDetail?email"+mvo.getEmail();
+		return"redirect:/member/detail?email="+mvo.getEmail();
 	}
 	
 	

@@ -73,7 +73,7 @@ public class BoardCotroller {
 		model.addAttribute("ph", ph);
 		return "/board/boardList";	
 	}
-	
+
 	//글 상세
 	@GetMapping("detail")
 	public String boardDetail(@RequestParam("bno")long bno,Model model) {

@@ -9,7 +9,6 @@
 <title>Board Modify Page</title>
 </head>
 <body>
-	<jsp:include page="../common/header.jsp" />
 	<jsp:include page="../common/nav.jsp" />
 
 	<form action="/board/modify" method="post" enctype="multipart/form-data">

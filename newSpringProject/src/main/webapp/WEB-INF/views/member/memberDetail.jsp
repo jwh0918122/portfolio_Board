@@ -19,7 +19,6 @@ width: 500px;
 </head>
 <body>
 
-<jsp:include page="../common/header.jsp" />
 	<jsp:include page="../common/nav.jsp" />
 
 	<div id="box">

@@ -52,7 +52,7 @@ public class LoginSuccessHandler  implements AuthenticationSuccessHandler {
 			//권한을 가지는 네임(이메일) set
 			setAuthEmail(authentication.getName());
 			//성공하고 어디로 갈지 set
-			setAuthUrl("/board/list");
+			setAuthUrl("/");
 			//lastLogin update
 			boolean isOk = msv.updateLastLogin(getAuthEmail());
 			

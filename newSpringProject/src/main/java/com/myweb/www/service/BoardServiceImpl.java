@@ -124,4 +124,16 @@ public class BoardServiceImpl implements BoardService {
 		return fdao.fileRemove(uuid);
 	}
 
+	//최신글 10개만 가져옴
+	@Override
+	public List<BoardVO> getLatestArticle() {
+		return bdao.getLatestArticle();
+	}
+
+	//내가 쓴 글 가져옴
+	@Override
+	public List<BoardVO> getMyArticle(String email) {
+		return bdao.getMyArticle(email);
+	}
+
 }

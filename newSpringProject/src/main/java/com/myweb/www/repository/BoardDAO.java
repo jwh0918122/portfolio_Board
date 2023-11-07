@@ -25,4 +25,8 @@ public interface BoardDAO {
 
 	long selectBno();
 
+	List<BoardVO> getLatestArticle();
+
+	List<BoardVO> getMyArticle(String email);
+
 }

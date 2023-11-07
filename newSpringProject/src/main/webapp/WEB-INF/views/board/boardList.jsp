@@ -11,20 +11,24 @@
 display: flex;
 justify-content: center;
 }
+#navBox{
+display: flex;
+justify-content: center;
+}
+
 
 </style>
 </head>
 <body>
-	<jsp:include page="../common/header.jsp" />
 	<jsp:include page="../common/nav.jsp" />
 
 	<!-- 검색 라인 -->
-	<div class="container-fluid">
+	<div class="container-fluid c">
 
 		<form action="/board/list" method="get">
 			<input type="hidden" name="pageNo" value="1">
-			<input type="hidden" name="qty" value="${ph.pgvo.qty}">		
 			<c:set value="${ph.pgvo.type}" var="typed" />
+			<c:set value="${ph.pgvo.qty}" var="qtyed" />
 			<div class="box">
 			<div>
 			<select name="type" class="form-select">
@@ -35,11 +39,17 @@ justify-content: center;
 				<option value='twc' ${typed eq 'twc'? 'selected':''}>all</option>
 			</select>
 			</div>
-			
+				<div>
+			<select name="qty" class="form-select">
+				<option value="5" ${(qtyed == 5)?'selected':''}>5</option>
+				<option value="10" ${(qtyed == 10)?'selected':''}>10</option>
+				<option value="15" ${(qtyed == 15)?'selected':''}>15</option>
+				<option value="20" ${(qtyed == 20)?'selected':''}>20</option>
+			</select>
+	</div>
 			<div>
 			<input type="search" name="keyword" value="${ph.pgvo.keyword}" class="form-control me-2">
 			</div>
-	
 			<button class="btn btn-primary position-relative searchBtn" type="submit">
 			Search
 			 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -85,6 +95,7 @@ justify-content: center;
 
 	<!-- 페이지네이션 라인 -->
 	<nav aria-label="Page navigation example">
+	<div id="navBox">
 		<ul class="pagination">
 			<li class="page-item ${(ph.prev ne true)? 'disabled':''}">
 				<a class="page-link" href="/board/list?pageNo=${ph.startPage-1}&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous"> 
@@ -102,6 +113,7 @@ justify-content: center;
 				</a>
 			</li>
 		</ul>
+		</div>
 	</nav>
 	<!-- 페이지네이션 라인 끝-->
 

@@ -17,7 +17,6 @@ width: 500px;
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/nav.jsp"/>
 <div class="signUpBox">
 <form action="/member/signUp" method="post">

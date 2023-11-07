@@ -18,7 +18,7 @@ public class MemberTest {
 
 	@Test
 	public void insertBoard() {
-		for (int i = 0; i < 300; i++) {
+		for (int i = 0; i < 200; i++) {
 			MemberVO mvo = new MemberVO();
 			mvo.setEmail("testUserEmail" + i);
 			mvo.setNickName("testUserNickName" + i);

@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		/* http에 승인 요청 */
 		// permitAll은 모든 사용자가 사용 가능한 거
 		http.authorizeRequests().antMatchers("/member/list").hasRole("ADMIN") // /member/list페이지는 ADMIN만 가능
-				.antMatchers("/", "/board/list", "/board/detail", "/resources/**","/member/register", "/member/signUp", "/member/login",
+				.antMatchers("/","/board/**", "/board/list", "/board/detail", "/resources/**","/member/register", "/member/signUp", "/member/login",
 						"/upload/**", "/comment/**")
 				.permitAll().anyRequest().authenticated(); //// 나머지는 인증된 사용자만 사용할 수 있게 처리
 

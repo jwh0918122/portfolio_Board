@@ -12,11 +12,15 @@
 display: flex;
 justify-content: center;
 }
+#navBox{
+display: flex;
+justify-content: center;
+}
+
 
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp" />
 	<jsp:include page="../common/nav.jsp" />
 
 	<!-- 검색 라인 -->
@@ -86,6 +90,7 @@ justify-content: center;
 
 	<!-- 페이지네이션 라인 -->
 	<nav aria-label="Page navigation example">
+	<div id="navBox">
 		<ul class="pagination">
 			<li class="page-item ${(ph.prev ne true)? 'disabled':''}">
 				<a class="page-link" href="/board/list?pageNo=${ph.startPage-1}&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous"> 
@@ -103,6 +108,7 @@ justify-content: center;
 				</a>
 			</li>
 		</ul>
+		</div>
 	</nav>
 	<!-- 페이지네이션 라인 끝-->
 

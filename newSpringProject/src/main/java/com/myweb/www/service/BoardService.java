@@ -25,6 +25,11 @@ public interface BoardService {
 
 	int fileRemove(String uuid);
 
+	List<BoardVO> getLatestArticle();
+
+	List<BoardVO> getMyArticle(String email);
+
+
 
 
 }
