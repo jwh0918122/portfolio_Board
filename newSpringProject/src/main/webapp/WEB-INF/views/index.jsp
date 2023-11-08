@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
 <title>Home</title>
@@ -20,6 +21,9 @@ padding-right: 50px;
 .latestArticle{
 width: 30%;
 }
+.myArticle{
+width: 30%;
+}
 </style>
 </head>
 <body>
@@ -33,7 +37,7 @@ width: 30%;
 			<sec:authentication property="principal.mvo.authList" var="auths" />
 
 			<div class="card profile">
-				<img src="/resources/img/logo.png" class="card-img-top" alt="...">
+				<img src="/upload/${fn:replace(pvo.saveDir,'\\','/')}/${pvo.uuid}_${pvo.fileName}" alt="프로필 사진을 등록해 주세요">
 
 				<div class="card-body">
 					<hr>
@@ -107,10 +111,6 @@ width: 30%;
 				</div>
 				
 			</div>
-		
-		
-		
-
 	</sec:authorize>
 	</div>
 	<jsp:include page="common/footer.jsp" />

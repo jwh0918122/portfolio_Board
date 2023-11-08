@@ -19,4 +19,11 @@
   <select id="selectAllFiles" resultType="com.myweb.www.domain.FileVO">
   select * from file
   </select>
+  <insert id="insertProfileImg">
+  insert into pro_file(uuid,save_dir,file_name,file_type,email,file_size)
+   values(#{uuid},#{saveDir},#{fileName},#{fileType},#{email},#{fileSize})
+  </insert>
+  <select id="getProfileImg" resultType="com.myweb.www.domain.ProFileVO">
+  	select * from pro_file where email=#{email}
+  </select>
   </mapper>

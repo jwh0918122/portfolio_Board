@@ -45,3 +45,19 @@ primary key(email));
 create table auth_member(
 email varchar(100) not null,
 auth varchar(50) not null);
+
+--2023-11-08
+create table pro_file(
+uuid varchar(256) not null,
+save_dir varchar(256) not null,
+file_name varchar(256) not null,
+file_type tinyint(1) default 0,
+email varchar(100) not null,
+file_size bigint,
+primary key(uuid));
+
+-- 참조키 설정
+alter table comment add constraint fk_comm foreign key(bno) references board(bno) on delete cascade;
+alter table file add constraint fk_file foreign key(bno) references board(bno) on delete cascade;
+alter table auth_member add constraint fk_auth foreign key(email) references member(email) on delete cascade;
+alter table pro_file add constraint fk_profile foreign key(email) references member(email) on delete cascade;

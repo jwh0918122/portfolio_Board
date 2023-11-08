@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myweb.www.domain.MemberDTO;
 import com.myweb.www.domain.PagingVO;
+import com.myweb.www.domain.ProFileVO;
+import com.myweb.www.handler.FileHandler;
 import com.myweb.www.handler.PagingHandler;
+import com.myweb.www.handler.PfileHandler;
 import com.myweb.www.security.MemberVO;
 import com.myweb.www.service.MemberService;
 
@@ -31,11 +36,14 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 	private MemberService msv;
 	private BCryptPasswordEncoder bcEncoder;
-
+//	private FileHandler fh;
+	private PfileHandler pfh;
+	
 	@Autowired
-	public MemberController(MemberService msv,BCryptPasswordEncoder bcEncoder) {
+	public MemberController(MemberService msv,BCryptPasswordEncoder bcEncoder,PfileHandler pfh) {
 		this.msv = msv;
 		this.bcEncoder=bcEncoder;
+		this.pfh=pfh;
 	}
 	//회원가입 페이지로 이동
 	@GetMapping("/register")
@@ -43,9 +51,23 @@ public class MemberController {
 	
 	//회원가입
 	@PostMapping("/signUp")
-	public String signUp(MemberVO mvo) {
+	public String signUp(MemberVO mvo,MultipartFile profile) {
+		
+		log.info("mvo>>>{} , profile = {} ",mvo ,profile);
+	
 		mvo.setPwd(bcEncoder.encode(mvo.getPwd()));//비밀번호 암호화
-		int isOk=msv.signUp(mvo);
+		
+	ProFileVO pfile =null;
+		if(profile.getSize()>0) {
+			pfile = pfh.uploadFiles(profile,mvo.getEmail());
+		}
+		
+		int isOk=0;
+//		int isOk=msv.signUp(mvo);
+		if(isOk>0 || profile.getSize()>0) {
+			isOk=msv.signUpProfile(new MemberDTO(mvo,pfile));				
+		}
+		
 		return "index";
 	}
 	

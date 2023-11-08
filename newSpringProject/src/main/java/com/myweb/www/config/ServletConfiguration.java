@@ -22,8 +22,10 @@ public class ServletConfiguration implements WebMvcConfigurer {
 
 		// 파일 업로드 경로
 		registry.addResourceHandler("/upload/**").addResourceLocations("file:///D:\\_myweb\\_java\\fileupload\\");
+	
+		registry.addResourceHandler("/upload/**").addResourceLocations("file:///D:\\_myweb2\\_java2\\fileupload2\\");
 	}
-
+	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

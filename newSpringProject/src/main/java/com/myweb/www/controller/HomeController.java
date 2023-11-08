@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.myweb.www.domain.BoardVO;
 import com.myweb.www.domain.PagingVO;
+import com.myweb.www.domain.ProFileVO;
 import com.myweb.www.handler.PagingHandler;
+import com.myweb.www.repository.FileDAO;
+import com.myweb.www.repository.ProFileDAO;
 import com.myweb.www.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,20 +38,35 @@ public class HomeController {
 	
 	@Inject
 	private BoardService bsv;
+	@Inject
+	private FileDAO fdao;
+//	private ProFileDAO pfdao;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model,Principal principal) {
+	public String home(Locale locale, Model model, Principal principal) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		List<BoardVO> list = bsv.getLatestArticle(); //최신글 10개만 가져옴
-		
-		String email = principal.getName().toString();		
-		List<BoardVO> myList=bsv.getMyArticle(email);//내가 쓴 글 가져옴
-		
 		model.addAttribute("list", list);
-		model.addAttribute("myList", myList);
 		log.info("list>>>>>>>>>>>"+list);
-		return "index";
+		
+		try {			
+			if(principal.getName() !=null) {
+				String 	email =principal.getName();
+				log.info("dfdfd "+email);
+				List<BoardVO> myList=bsv.getMyArticle(email);//내가 쓴 글 가져옴
+				model.addAttribute("myList", myList);
+				ProFileVO pvo = fdao.getProfileImg(email);//프로필 이미지
+				log.info("PVO>>>"+pvo);
+				model.addAttribute("pvo", pvo);
+			}			
+			
+		}catch (Exception e) {
+			log.info("null point");
+			e.printStackTrace();
+		}
+		return "index";			
+		
 	}
 	
 }

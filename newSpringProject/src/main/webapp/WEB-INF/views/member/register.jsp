@@ -19,19 +19,32 @@ width: 500px;
 <body>
 <jsp:include page="../common/nav.jsp"/>
 <div class="signUpBox">
-<form action="/member/signUp" method="post">
-<div class="input-group input-group-lg">
-  <input type="text" class="form-control" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Email">
+<form action="/member/signUp" method="post" enctype="multipart/form-data">
+
+<div class="mb-3 input-group-lg">
+<label for="e" class="form-label">Email</label>
+  <input type="text" class="form-control" id="e" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
 </div>
-<div class="input-group input-group-lg">
-  <input type="text" class="form-control" name="pwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="PassWord">
+
+<div class="mb-3 input-group-lg">
+<label for="p" class="form-label">PassWord</label>
+  <input type="text" class="form-control" id="p" name="pwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
 </div>
-<div class="input-group input-group-lg">
-  <input type="text" class="form-control" name="nickName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="NickName">
+
+<div class="mb-3 input-group-lg">
+<label for="n" class="form-label">NickName</label>
+  <input type="text" class="form-control" id="n" name="nickName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
 </div>
+
+<div class="mb-3">
+ <label for="f" class="form-label">Profile Img</label>
+  <input class="form-control" type="file" id="f" name="profile">
+</div>
+
 <div class="btnContainer">
 	<button type="submit" class="btn btn-outline-primary">회원가입</button>
 </div>
+
 </form>
 </div>
 <jsp:include page="../common/footer.jsp"/>

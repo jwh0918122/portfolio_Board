@@ -3,6 +3,7 @@ package com.myweb.www.repository;
 import java.util.List;
 
 import com.myweb.www.domain.FileVO;
+import com.myweb.www.domain.ProFileVO;
 
 public interface FileDAO {
 
@@ -15,6 +16,10 @@ public interface FileDAO {
 	int getTotalCount(long bno);
 
 	List<FileVO> selectAllFiles();
+
+	int insertProfileImg(ProFileVO pvo);
+
+	ProFileVO getProfileImg(String email);
 
 
 }
